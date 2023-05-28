@@ -63,30 +63,87 @@ window.onscroll = () =>{
    }
 }
 
-//Question Bank
-const question =[{
-   question: "Which of the following elements has the highest electronegativity?",
-   option: ['Sodium','Carbon','Fluorine','Zinc',], 
-   answer: 'Fluorine'
-},
-{
-   question: " Which of the following is an example of a heterogeneous mixture? ",
-   option: ['Saltwater','Air','Vinegar','Granite',], )
-   answer: 'Granite'
-},
-{
-   question: "Which of the following compounds is a strong acid? ",
-   option: ['Acetic acid (CH3COOH)','Nitric acid (HNO3)','Ethanol (C2H5OH)','Ammonia (NH3)',], 
-   answer: 'Nitric acid (HNO3)'
-},
-{
-   question: "The process of converting a solid directly into a gas without going through the liquid phase is called:",
-   option: ['Sublimation ','Evaporation','Condensation','Fusion',], 
-   answer: 'Sublimation '
-},{
-   question: "Which of the following is an example of an exothermic reaction?",
-   option: ['Burning wood','Melting ice','Dissolving salt in water','Photosynthesis',],
-   answer: 'Burning wood'
-}
-
+const questions = [
+    {
+        question: "Which of the following elements has the highest electronegativity?",
+        options: ['Sodium','Carbon','Fluorine','Zinc',], 
+        answer: 2
+     },
+    {
+      question: "Which of the following compounds is a strong acid?",
+      options: ['Acetic acid (CH3COOH)','Nitric acid (HNO3)','Ethanol (C2H5OH)','Ammonia (NH3)'],
+      answer: 1
+    },
+    {
+        question: "Which of the following is an example of a heterogeneous mixture?",
+        options:  ['Saltwater','Air','Vinegar','Granite'],
+        answer: 3
+      },
+      {
+        question: "The process of converting a solid directly into a gas without going through the liquid phase is called?",
+        options: ['Sublimation ','Evaporation','Condensation','Fusion'],
+        answer: 0
+      },
+      {
+        question: "Which of the following is an example of an exothermic reaction?",
+        options: ['Burning wood','Melting ice','Dissolving salt in water','Photosynthesis'],
+        answer: 0
+      },
+    
+    // Add more questions here
+  ];
   
+  let currentQuestion = 0;
+  let score = 0;
+  
+  const questionElement = document.getElementById("question");
+  const optionsElement = document.getElementById("options");
+  const nextBtn = document.getElementById("nextBtn");
+  const resultElement = document.getElementById("result");
+  
+  function loadQuestion() {
+    const question = questions[currentQuestion];
+    questionElement.textContent = question.question;
+  
+    optionsElement.innerHTML = "";
+    for (let i = 0; i < question.options.length; i++) {
+      const option = document.createElement("label");
+      const input = document.createElement("input");
+      input.type = "radio";
+      input.name = "option";
+      input.value = i;
+      option.appendChild(input);
+      option.append(" " + String.fromCharCode(65 + i) + ") " + question.options[i]);
+      optionsElement.appendChild(option);
+    }
+  }
+  
+  function checkAnswer() {
+    const selectedOption = document.querySelector('input[name="option"]:checked');
+    if (selectedOption) {
+      const question = questions[currentQuestion];
+      if (parseInt(selectedOption.value) === question.answer) {
+        score++;
+      }
+  
+      currentQuestion++;
+      if (currentQuestion < questions.length) {
+        loadQuestion();
+      } else {
+        showResult();
+      }
+    }
+  }
+  
+  function showResult() {
+    questionElement.style.display = "none";
+    optionsElement.style.display = "none";
+    nextBtn.style.display = "none";
+    resultElement.textContent = "Congratulation! You scored " + score + " out of " + questions.length;
+    resultElement.style.display = "block";
+    if(score<3){
+        return "Sory your score "+score +" is below average, you are not ready for the exam"
+    }
+  }
+  nextBtn.addEventListener("click", checkAnswer);
+  loadQuestion();

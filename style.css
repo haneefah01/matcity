@@ -1363,6 +1363,37 @@ section{
    }
 
 }
+.container {
+   max-width: 600px;
+   margin: 0 auto;
+   padding: 20px;
+   text-align: center;
+ }
+ 
+ h1 {
+   margin-bottom: 20px;
+   font-size: 40px;
+ }
+ 
+ #question {
+   margin-top: 20px;
+   font-size: 18px;
+ }
+ #options {
+   margin-top: 20px;
+   font-size: 16px;
+ }
+ 
+ #result {
+   margin-top: 20px;
+   font-weight: bold;
+   font-size: 16px;
+ }
+ #nextBtn {
+   margin-top: 20px;
+   font-size: 18px;
+ }
+ 
 
 @media (max-width:450px){
 
@@ -1382,5 +1413,4 @@ section{
    .about .row .image img{
       height: 25rem;
    }
-
 }
