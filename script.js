@@ -62,3 +62,31 @@ window.onscroll = () =>{
       body.classList.remove('active');
    }
 }
+
+//Question Bank
+const question =[{
+   question: "Which of the following elements has the highest electronegativity?",
+   option: ['Sodium','Carbon','Fluorine','Zinc',], 
+   answer: 'Fluorine'
+},
+{
+   question: " Which of the following is an example of a heterogeneous mixture? ",
+   option: ['Saltwater','Air','Vinegar','Granite',], )
+   answer: 'Granite'
+},
+{
+   question: "Which of the following compounds is a strong acid? ",
+   option: ['Acetic acid (CH3COOH)','Nitric acid (HNO3)','Ethanol (C2H5OH)','Ammonia (NH3)',], 
+   answer: 'Nitric acid (HNO3)'
+},
+{
+   question: "The process of converting a solid directly into a gas without going through the liquid phase is called:",
+   option: ['Sublimation ','Evaporation','Condensation','Fusion',], 
+   answer: 'Sublimation '
+},{
+   question: "Which of the following is an example of an exothermic reaction?",
+   option: ['Burning wood','Melting ice','Dissolving salt in water','Photosynthesis',],
+   answer: 'Burning wood'
+}
+
+  
